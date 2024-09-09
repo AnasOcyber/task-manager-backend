@@ -8,13 +8,13 @@ import { User } from './entities/user.entity';
 export class AuthController {
   constructor(@Inject() private authService: AuthService) {}
 
-  @Post('signup')
-  signup(@Body() signUpDto: SignupDto): Promise<User> {
-    return this.authService.signup(signUpDto);
+  @Post('register')
+  register(@Body() signUpDto: SignupDto): Promise<User> {
+    return this.authService.register(signUpDto);
   }
 
-  @Get('signin')
-  signin(@Body() signinDto: SigninDto): Promise<User> {
-    return this.authService.signin(signinDto);
+  @Get('login')
+  login(@Body() signinDto: SigninDto): Promise<User> {
+    return this.authService.login(signinDto);
   }
 }
