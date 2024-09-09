@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  readonly id: string;
+  readonly id: number;
 
   @Column()
   readonly firstName: string;
@@ -13,4 +13,7 @@ export class User {
 
   @Column()
   readonly password: string;
+
+  @Column('json', { nullable: true })
+  tasks: string[];
 }
