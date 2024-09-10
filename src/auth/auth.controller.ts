@@ -13,7 +13,7 @@ export class AuthController {
     return this.authService.register(signUpDto);
   }
 
-  @Get('login')
+  @Post('login')
   login(@Body() signinDto: SigninDto): Promise<User> {
     return this.authService.login(signinDto);
   }
