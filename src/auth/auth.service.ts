@@ -17,12 +17,10 @@ export class AuthService {
     const generatedSalt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(signupDto.password, generatedSalt);
 
-    const user = this.usersService.create({
+    return await this.usersService.create({
       ...signupDto,
       password: hashedPassword,
     });
-
-    return user;
   }
 
   async login({
