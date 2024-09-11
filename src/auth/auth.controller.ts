@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { User } from 'src/users/entities/user.entity';
 import { AuthService } from './auth.service';
-import { SignupDto } from './dtos/signup.dto';
 import { SigninDto } from './dtos/signin.dto';
-import { User } from './entities/user.entity';
+import { SignupDto } from './dtos/signup.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -14,7 +14,9 @@ export class AuthController {
   }
 
   @Post('login')
-  login(@Body() signinDto: SigninDto): Promise<User> {
+  signin(
+    @Body() signinDto: SigninDto,
+  ): Promise<{ access_token: string } | undefined> {
     return this.authService.login(signinDto);
   }
 }
