@@ -16,7 +16,9 @@ export class AuthController {
   @Post('login')
   signin(
     @Body() signinDto: SigninDto,
-  ): Promise<{ access_token: string } | undefined> {
+  ): Promise<
+    { access_token: string; userId: number; username: string } | undefined
+  > {
     return this.authService.login(signinDto);
   }
 }

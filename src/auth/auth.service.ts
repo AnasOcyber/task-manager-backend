@@ -26,7 +26,9 @@ export class AuthService {
   async login({
     email,
     password,
-  }: SigninDto): Promise<{ access_token: string } | undefined> {
+  }: SigninDto): Promise<
+    { access_token: string; userId: number; username: string } | undefined
+  > {
     const user = await this.usersService.findOne(email);
 
     if (user) {
@@ -39,7 +41,11 @@ export class AuthService {
         email: user.email,
       };
 
-      return { access_token: await this.jwtService.signAsync(payload) };
+      return {
+        userId: user.id,
+        username: user.firstName,
+        access_token: await this.jwtService.signAsync(payload),
+      };
     }
   }
 }

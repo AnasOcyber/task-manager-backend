@@ -1,13 +1,14 @@
-import { IsBoolean, IsString, MinLength } from 'class-validator';
+import { IsBoolean, IsOptional, IsString, MinLength } from 'class-validator';
 
 export class CreateTaskDto {
   @IsString()
   @MinLength(3)
-  readonly title: string;
+  title: string;
 
   @IsString()
-  readonly description: string;
+  description: string;
 
   @IsBoolean()
-  readonly isCompleted: boolean;
+  @IsOptional()
+  isCompleted: boolean;
 }
