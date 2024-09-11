@@ -15,7 +15,7 @@ import { Task } from './entities/task.entity';
 
 @Controller('tasks')
 export class TasksController {
-  constructor(@Inject() private tasksService: TasksService) {}
+  constructor(private readonly tasksService: TasksService) {}
 
   @Post()
   createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
